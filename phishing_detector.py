@@ -30,13 +30,13 @@ def analyze_url(url):
     score += ip_score
     details['IP in URL'] = ip_score
 
-
+    #score de présence de mots suspects
     suspicious_words = ['login', 'secure', 'update', 'verify', 'bank', 'account', 'confirm']
     word_score = sum(10 for word in suspicious_words if word in url.lower())
     score += word_score
     details['Suspicious Words'] = word_score
 
-    # HTTPS
+    # score de présence de HTTPS
     https_score = 0 if url.startswith('https://') else 15
     score += https_score
     details['HTTPS'] = https_score
